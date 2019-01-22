@@ -18,7 +18,7 @@ This Framework uses the IONIC for styles along with a variety of powerful plugin
 
 ## Quick start
 
-**Installation Prerequisites **
+**Installation Prerequisites**
 
 Please make sure latest [Node](https://ionicframework.com/docs/resources/what-is/#node) 6 LTS and [NPM](https://ionicframework.com/docs/resources/what-is/#npm) 3+ are installed.
 
