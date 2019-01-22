@@ -19,6 +19,25 @@ This Framework uses the IONIC for styles along with a variety of powerful plugin
 ## Quick start
 
 
+**Install Ionic Framework**
+
+Ionic Command Line Interface (CLI) [https://ionicframework.com/docs/cli/](https://ionicframework.com/docs/cli/)
+
+Installation
+
+Please make sure latest [Node](https://ionicframework.com/docs/resources/what-is/#node) 6 LTS and [NPM](https://ionicframework.com/docs/resources/what-is/#npm) 3+ are installed.
+
+
+Then, install the CLI globally (you may need sudo):
+```
+$ npm install -g ionic@latest
+```
+
+You can verify your installation with the command.
+```
+$ ionic --version 
+```
+
 **GitHub Versioning Tools**
 
 To download github Client.
@@ -29,24 +48,8 @@ Download for Windows (msi): [https://desktop.github.com/](https://desktop.github
 git clone https://github.com/davith01/easyMaker.git
 ```
 ```
-cd /Users/user/easyMaker
+cd easyMaker/
 ```
-```
-npm install
-```
-
-**Bower**
-
-To install libreries asset/vendors
-
-```
-bower install
-```
-
-**npm**
-
-To install libreries node_modules/
-
 ```
 npm install
 ```
@@ -54,7 +57,7 @@ npm install
 To start server use
 
 ```
-node index.js
+ionic serve
 ```
 
 
