@@ -18,15 +18,15 @@ This Framework uses the IONIC for styles along with a variety of powerful plugin
 
 ## Quick start
 
+**Installation Prerequisites **
+
+Please make sure latest [Node](https://ionicframework.com/docs/resources/what-is/#node) 6 LTS and [NPM](https://ionicframework.com/docs/resources/what-is/#npm) 3+ are installed.
+
+
 
 **Install Ionic Framework**
 
 Ionic Command Line Interface (CLI) [https://ionicframework.com/docs/cli/](https://ionicframework.com/docs/cli/)
-
-Installation
-
-Please make sure latest [Node](https://ionicframework.com/docs/resources/what-is/#node) 6 LTS and [NPM](https://ionicframework.com/docs/resources/what-is/#npm) 3+ are installed.
-
 
 Then, install the CLI globally (you may need sudo):
 ```
