@@ -1,8 +1,8 @@
 # Easy Maker
 
-Easy Maker Framework is a sleek, intuitive, and powerful front-end framework for faster and easier VAS cloud services, 
+Easy Maker is a sleek, intuitive, and powerful app for faster and easier shopping cart,
 
-This Framework uses the IONIC for styles along with a variety of powerful plugins and tools to create a powerful framework for creating apps Android and Iphone.
+This uses the IONIC Framework components along with a variety of powerful plugins and tools to create a powerful framework for apps Android and Iphone.
 
 ## Easy Maker Architect Solution
 
@@ -67,7 +67,7 @@ ionic serve
 
 * [Cordova Plugin Facebook](https://ionicframework.com/docs/native/facebook/)
 * [Cordova build android](https://ionicframework.com/docs/cli/cordova/build/)
-* [Ionic-Angular Component](https://ionicframework.com/docs/components/)
+* [Ionic-Angular Components](https://ionicframework.com/docs/components/)
  
 
 ## Copyright and license
