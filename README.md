@@ -65,9 +65,9 @@ ionic serve
 
 ## Script included
 
-* Ionic
-* Facebook Plugin
-* Cordova build Android
+* [Cordova Plugin Facebook](https://ionicframework.com/docs/native/facebook/)
+* [Cordova build android](https://ionicframework.com/docs/cli/cordova/build/)
+* [Ionic-Angular Component](https://ionicframework.com/docs/components/)
  
 
 ## Copyright and license
