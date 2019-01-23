@@ -65,19 +65,13 @@ ionic serve
 
 ## Script included
 
-* Bootstrap
-* FullCalendar
-* dataTables
-* iCheck
-* NProgress
-* select2
-* Autosize - resizes text area to fit text
-* validator - HTML from validator using jQuery
-* jQuery Smart Wizard
+* Ionic
+* Facebook Plugin
+* Cordova build Android
  
 
 ## Copyright and license
 
-Cloud Services is licensed under The MIT License (MIT). Which means that you can use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software. But you always need to state that Colorlib is the original author of this template.
+Easy Maker Framekork is licensed under The MIT License (MIT). Which means that you can use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software. But you always need to state that Colorlib is the original author of this template.
 
-Project is developed by [David Camacho](https://davithc01@gmail.com) and [Luis Urrea](https://co.linkedin.com/in/luis-urrea-95b2223) and maintained by [Consorcio Skol & Serna Inc](http://ssadvisors.net/) 
+Project is developed by [David Camacho](https://davithc01@gmail.com)
