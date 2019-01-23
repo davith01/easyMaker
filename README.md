@@ -6,7 +6,7 @@ This Framework uses the IONIC for styles along with a variety of powerful plugin
 
 ## Easy Maker Architect Solution
 
-![Easy Maker Framework Architect](http://fundacionjesusdenazareth.org/css/banner/ServicesCloud-SolutionArquitect.jpeg "Cloud Services Framework Architect Preview")
+![Easy Maker Framework Architect](http://fundacionjesusdenazareth.org/easyMarket/imgs/solution-arquitect.jpeg "Services Framework Architect Preview")
 
 ## Table of contents
 
