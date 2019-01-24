@@ -2,7 +2,7 @@
 
 Easy Maker is a sleek, intuitive, and powerful app for faster and easier shopping cart,
 
-This uses the IONIC Framework components along with a variety of powerful plugins and tools to create a powerful framework for apps Android and Iphone.
+This uses the [Ionic](https://ionicframework.com/docs/intro) Framework components along with a variety of powerful plugins and tools to create a powerful framework for apps Android and Iphone.
 
 ## Easy Maker Architect Solution
 
@@ -18,17 +18,14 @@ This uses the IONIC Framework components along with a variety of powerful plugin
 
 ## Quick start
 
-**Installation Prerequisites**
+**Installation prerequisites**
 
-Please make sure latest [Node](https://ionicframework.com/docs/resources/what-is/#node) 6 LTS and [NPM](https://ionicframework.com/docs/resources/what-is/#npm) 3+ are installed.
-
+Please make sure latest [Node](https://nodejs.org/es/) and [Git](https://git-scm.com/downloads) package are installed
 
 
 **Install Ionic Framework**
 
-Ionic Command Line Interface (CLI) [https://ionicframework.com/docs/cli/](https://ionicframework.com/docs/cli/)
-
-Then, install the CLI globally (you may need sudo):
+install the CLI pacakge globally (you may need sudo):
 ```
 $ npm install -g ionic@latest
 ```
@@ -40,10 +37,8 @@ $ ionic --version
 
 **GitHub Versioning Tools**
 
-To download github Client.
-Download for Windows (msi): [https://desktop.github.com/](https://desktop.github.com/)
+Clone the repository
 
-**Clone the repository**
 ```
 git clone https://github.com/davith01/easyMaker.git
 ```
@@ -51,7 +46,7 @@ git clone https://github.com/davith01/easyMaker.git
 cd easyMaker/
 ```
 ```
-npm install
+$ npm install
 ```
 
 To start server use
@@ -61,13 +56,18 @@ ionic serve
 ```
 
 
+
+
 ## Documentation
 
-## Script included
-
+* [Ionic-Angular Components](https://ionicframework.com/docs/components/)
 * [Cordova Plugin Facebook](https://ionicframework.com/docs/native/facebook/)
 * [Cordova build android](https://ionicframework.com/docs/cli/cordova/build/)
-* [Ionic-Angular Components](https://ionicframework.com/docs/components/)
+
+Create your personal account on [Github](https://github.com/)
+Download for Windows (msi): [https://desktop.github.com/](https://desktop.github.com/)
+
+## Script included
  
 
 ## Copyright and license
