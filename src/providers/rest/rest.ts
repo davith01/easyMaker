@@ -6,8 +6,7 @@ import { LoadingController, ToastController} from 'ionic-angular';
 @Injectable()
 export class RestProvider {
 
-  apiUrl = 'http://fundacionjesusdenazareth.org/RappiApp';
-  apiUrlApp = 'http://fundacionjesusdenazareth.org/easyMarket/rest';
+  apiUrl = 'http://fundacionjesusdenazareth.org/easy-maker/rest';
   
   constructor(public http: HttpClient, public loadingCtrl: LoadingController, public toastCtrl: ToastController, public authUserProvider: AuthUserProvider) {
   }
@@ -28,17 +27,17 @@ export class RestProvider {
   }
 
   getProducts() {
-	  let url = this.apiUrlApp+'/product/read.php';
+	  let url = this.apiUrl+'/product/read.php';
 	  return this.httpSend(url,null);
   }
   
   getPromotions() {
-	  let url = this.apiUrlApp+'/promotion/read.php';
+	  let url = this.apiUrl+'/promotion/read.php';
 	  return this.httpSend(url,null);
   }
   
   getPromotion(promotion) {
-	  let url = this.apiUrlApp+'/promotion/read.php?promotionId='+promotion.id;
+	  let url = this.apiUrl+'/promotion/read.php?promotionId='+promotion.id;
 	  return this.httpSend(url,null);
   }
   
@@ -49,12 +48,12 @@ export class RestProvider {
   }
    
   addShoppingCart(data) {
-	  let url = this.apiUrlApp+'/shopinng-cart/add.php';
+	  let url = this.apiUrl+'/shopinng-cart/add.php';
 	  return this.httpSend(url,data);
   }
   
   getUserSession(data) {
-	  let url = this.apiUrlApp+'/auth-session/login.php';
+	  let url = this.apiUrl+'/auth-session/login.php';
 	  return this.httpSend(url,data);
   }
   

@@ -83,7 +83,7 @@ export class PromotionPage {
 	});
   }
   
-  doPromptAddOrder(promotion) {
+  doPromptAddOrder() {
 	let prompt = this.alertCtrl.create({
       title: 'Add to shopping cart',
       //message: "Confirm <b>that</b> you wish the add to shopping card <ul><li>title $ "+this.promotion.title+"</li><li>price $ "+this.promotion.price+"</li><ul>",
@@ -92,7 +92,7 @@ export class PromotionPage {
         { text: 'Cancel' },
         { text: 'Add',
           handler: data => {
-			this.sendToShoppingCart(promotion);
+			this.sendToShoppingCart();
           }
         }
       ]
