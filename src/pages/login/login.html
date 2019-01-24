@@ -1,0 +1,32 @@
+<ion-content padding id="page5">
+
+    <form (ngSubmit)="goToHome('Login')">
+		<ion-list id="login-list2">
+		  <ion-item id="login-input1">
+			<ion-label stacked> User name</ion-label>
+			<ion-input type="email" [(ngModel)]="loginEmail" [ngModelOptions]="{standalone: true}" value="jhon@smith.com"></ion-input>
+		  </ion-item>
+		  <ion-item id="login-input2">
+			<ion-label stacked> Password </ion-label>
+			<ion-input type="password" [(ngModel)]="loginPassword" [ngModelOptions]="{standalone: true}" value="123"></ion-input>
+		  </ion-item>
+		</ion-list>
+		<button type="submit" class="login-button" ion-button block color="stable" >
+		  Log in
+		</button>
+		<div class="spacer" style="height:40px;" id="login-spacer3"></div>
+	</form>
+	<div *ngIf="userLogin">
+		{{userLogin}}
+	</div>
+	
+	<button ion-button icon-right (click)="facebookLogin()" class="facebook-button">
+      Login with
+      <ion-icon name="logo-facebook"></ion-icon>
+    </button>
+	
+    <button id="login-button2" ion-button round full outline block color="positive" on-click="goToHome('Anonymous')">
+      Or start with anonymous user
+    </button>
+  
+</ion-content>

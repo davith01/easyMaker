@@ -1,0 +1,56 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>promotion</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding id="page4">
+
+  <ion-card *ngIf="promotion">
+    <ion-card-content>
+	  <img [src]="promotion.imagen"/>
+	
+	  <ion-row>
+		<ion-col>
+		  <button ion-button icon-start clear small>
+			<ion-icon name="thumbs-up"></ion-icon>
+			<div>12 Likes</div>
+		  </button>
+		</ion-col>
+		<ion-col>
+		  <button ion-button icon-start clear small>
+			<ion-icon name="ribbon"></ion-icon>
+			<div>260 Sales</div>
+		  </button>
+		</ion-col>
+	  </ion-row>
+	  
+	
+      <ion-card-title [innerHTML]="promotion.title">
+      </ion-card-title>
+      <p [innerHTML]="promotion.description"></p>
+    </ion-card-content>
+
+    <ion-item>
+	  <ion-icon name='pricetag' item-start style="color: #f53d3d"></ion-icon>
+      Price
+      <button ion-button item-end outline style="border-color:#f53d3d; color:#f53d3d;" [innerHTML]="promotion.price"></button>
+    </ion-item>
+	  
+	<div class="quantity-card">
+	  <h6>Quantity</h6>
+	  <ion-input class="quantity-input" type="number" value="1"></ion-input>
+	  <button ion-button color="light">-</button>
+	  <button ion-button color="light">+</button>
+    </div>
+	
+  <button id="promotion-button2" ion-button color="danger" full (click)="doPromptAddOrder(promotion)">
+    Add to shopping cart!
+  </button>
+  </ion-card>
+  
+</ion-content>

@@ -1,3 +1,93 @@
 page-home {
+  
+  .slide-zoom {
+    height: 90%;
+	width: 90%;
+  }
+  
+  .slide-image {
+	height: 100%;
+	width: 100%;
+  }
+  
+  .swiper-wrapper {
+      height: 79%;
+  }
+  
+  .slide-title {
+    font-size: 0.8em;
+	margin-top: 0rem;
+	text-align: left;
+	margin-left: 14px;
+  }
+  ion-slides {
+	 height: 55%;
+  }
+  .slide-sale {
+	top: 118px;
+	height: 55px;
+	position: absolute;
+	right: 0px;
+    z-index: 999;
+  }
+  .button-sale {
+	transform: scale(1) rotateZ(-45deg);width: 89px;
+  }
+  .swiper-container {
+     top: calc(0% - 0.5em);
+  }
+  
+  
+  .row{
+	flex-wrap: wrap;
+  }
+  .col{
+	flex: 1 1 calc(50% - 10px);
+    margin: 5px;
+  }
+	
+  .ion-card{
+      box-shadow: 0px 20px 35px -30px;
+      transition: all 0.2s ease-out 0s;
+  }
+
+  .card-image {
+	max-height: 196px;
+	width: auto;
+	margin-left: 10px;
+  }
+  
+  .card-title{
+      font-size: 0.6em;
+	  text-align: center;
+  }
+  
+  .card-subtitle{
+      font-size: 0.5em;
+	  text-align: center;
+  }
+
+@media screen and (min-width: 576px) {
+  .button-sale {
+	height: 35px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .slide-sale {
+	top: calc(100% - 3em);
+    right: calc(10% + 0em);
+ } 
+ .slide-title {
+ 	text-align: center;
+ }
+}
+@media screen and (min-width: 768px) {
+}
+@media screen and (min-width: 992px) {
+}
+@media screen and (min-width: 1200px) {
+}
+
+
 
 }

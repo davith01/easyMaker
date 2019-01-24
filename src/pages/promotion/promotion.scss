@@ -1,0 +1,19 @@
+page-promotion {
+
+	.quantity-card{
+	    display: flex;
+		padding: 5px;
+		text-align: center;
+		align-items: center;
+	}
+	
+	.quantity-input{
+		margin-left: calc(10% - 10px);
+		border-bottom: 1px solid #99C2EC;
+	}
+	
+	.input-cover {
+		maxlength:"4";
+	}
+}
+

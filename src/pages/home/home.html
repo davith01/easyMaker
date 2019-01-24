@@ -1,28 +1,53 @@
 <ion-header>
+
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <button ion-button menuToggle class="menuToggle">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+	  
+    
   </ion-navbar>
+
 </ion-header>
 
-<ion-content padding>
-  <div *ngIf="isLoggedIn; else facebookLogin">
-    <h2>Hi, {{users.name}} ({{users.email}})</h2>
-    <p>
-      Gender: {{users.gender}}
-    </p>
-    <p>
-      <img src="{{users.picture.data.url}}" width="100" alt="{{users.name}}" />
-    </p>
-    <p>
-      <button ion-button icon-right (click)="logout()">
-        Logout
-      </button>
-    </p>
-  </div>
-  <ng-template #facebookLogin>
-    <button ion-button icon-right (click)="login()">
-      Login with
-      <ion-icon name="logo-facebook"></ion-icon>
-    </button>
-  </ng-template>
+
+<ion-content padding class="page-home">
+  <img src="assets/imgs/logo-easy-maker.png" />
+
+  <div class="spacer"></div>
+
+  <h6 class="sub-title"> Promotions </h6>
+
+  <ion-slides pager>
+    <ion-slide *ngFor="let promotion of promotions" on-click="goToPromotion(promotion)">
+
+	  <img [src]="promotion.imagen" class="slide-image"/>      
+	  <h2 class="slide-title" [innerHTML]="promotion.title"></h2>	  
+	  <div class="slide-sale">
+	    <button ion-button outline color="assertive" class="button-sale">
+          Tap me!
+        </button>
+	  </div>
+	  <div class="line-separate"></div>
+	  
+    </ion-slide>
+  </ion-slides>
+
+  <h5 class="sub-title"> Products </h5>
+  
+  
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let product of products;" on-click="goToProduct(product)">
+        <div class="ion-card">
+			<img [src]="product.imagen" class="card-image"/>
+			<div class="card-title" [innerHTML]="product.name"></div>
+			<div class="card-subtitle" [innerHTML]="product.category.name"></div>
+		</div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
 </ion-content>
+
+					
