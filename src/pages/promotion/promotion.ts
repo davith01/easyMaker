@@ -92,7 +92,7 @@ export class PromotionPage {
         { text: 'Cancel' },
         { text: 'Add',
           handler: data => {
-			this.sendToShoppingCart(promotion);
+              this.sendToShoppingCart();
           }
         }
       ]
