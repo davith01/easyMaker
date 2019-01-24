@@ -6,7 +6,7 @@ import { LoadingController, ToastController} from 'ionic-angular';
 @Injectable()
 export class RestProvider {
 
-  apiUrl = 'http://fundacionjesusdenazareth.org/easy-market/rest';
+  apiUrl = 'http://fundacionjesusdenazareth.org/easy-maker/rest';
   
   constructor(public http: HttpClient, public loadingCtrl: LoadingController, public toastCtrl: ToastController, public authUserProvider: AuthUserProvider) {
   }
