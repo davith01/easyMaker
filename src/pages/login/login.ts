@@ -50,8 +50,7 @@ export class LoginPage {
 		.catch(e => {
 		  this.showToast(JSON.stringify(e));
 		});
-  }
-  
+  }  
   
   goToHome(type,data) {
 	if(type === 'Anonymous'){
@@ -61,14 +60,12 @@ export class LoginPage {
 		data = {'email': this.loginEmail, 'password':this.loginPassword};
 	}
 	
-	//this.userLogin = JSON.stringify(data);
-	//this.navCtrl.setRoot('MenuPage');
 	this.getUserSession({ 'type': type, 'data': data });
   }
   
   getUserSession(data) {
 	  
-	let messageErr = 'Can\'t get session user';
+	let messageErr = 'Can\'t get user session';
 	
 	let loading = this.loadingCtrl.create({
 		  content: 'Please wait...'
@@ -82,10 +79,10 @@ export class LoginPage {
 		  loading.dismiss();
 		  
 		  if(res.data) {
-			//this.userLogin = JSON.stringify(res.data);
+			
 			let userSession = res.data && res.data.data ? res.data.data : res.data;
 			this.authUser.initSession(userSession);
-			this.navCtrl.setRoot('MenuPage');
+			//this.navCtrl.setRoot('MenuPage');
 		  }
 		  else if(res.err) {
 			this.showToast(messageErr);
