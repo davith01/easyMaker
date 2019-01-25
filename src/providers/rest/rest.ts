@@ -32,12 +32,12 @@ export class RestProvider {
   }
   
   getPromotions() {
-	  let url = this.apiUrl+'/promotion/read.php';
+	  let url = this.apiUrl+'/promotion/list.php';
 	  return this.httpSend(url,null);
   }
   
   getPromotion(promotion) {
-	  let url = this.apiUrl+'/promotion/read.php?promotionId='+promotion.id;
+	  let url = this.apiUrl+'/promotion/read.php?id='+promotion.id;
 	  return this.httpSend(url,null);
   }
   
