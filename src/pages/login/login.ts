@@ -4,6 +4,12 @@ import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 import { LoadingController, ToastController} from 'ionic-angular';
 import { AuthUserProvider } from '../../providers/auth-user/auth-user';
 import { RestProvider } from '../../providers/rest/rest';
+
+export interface ResponseRestInterface {
+  data?: any;
+  message?: string;
+  error?: any;
+}
  
 @IonicPage()
 @Component({
@@ -12,15 +18,16 @@ import { RestProvider } from '../../providers/rest/rest';
 })
 export class LoginPage {
 	
-  userLogin: any;
   loginEmail: string;
   loginPassword: string;
+  userSession: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public authUser: AuthUserProvider, public restProvider: RestProvider, private fb: Facebook, public toastCtrl: ToastController, public loadingCtrl: LoadingController) {
   	  fb.getLoginStatus()
 		.then(res => {
 		  if(res.status === "connect") {
 			  this.goToHome('Facebook',res);
+			  this.getUserFacebookDetail(res.authResponse.userID);
 		  }
 		})
 		.catch(e => { 
@@ -50,46 +57,46 @@ export class LoginPage {
 		.catch(e => {
 		  this.showToast(JSON.stringify(e));
 		});
-  }  
+  }    
   
   goToHome(type,data) {
+	  
 	if(type === 'Anonymous'){
-		data = {'type': 'Anonymous'};
+		data = { 'type': type, 'data': { 'type': 'Anonymous' } };
 	}
 	else if(type === 'Login') {
-		data = {'email': this.loginEmail, 'password':this.loginPassword};
+		data = { 'type': type, 'data': {'email': this.loginEmail, 'password':this.loginPassword}};
+	}
+	else if(type === 'Facebook') {
+		data = { 'type': type, 'data': data};
 	}
 	
-	this.getUserSession({ 'type': type, 'data': data });
-  }
-  
-  getUserSession(data) {
-	  
 	let messageErr = 'Can\'t get user session';
 	
 	let loading = this.loadingCtrl.create({
 		  content: 'Please wait...'
 	});
 	
-	loading.present().then(() => {
-		
-		this.restProvider.getUserSession(data).then(result => {
+	loading.present().then(() => { //start the loading component
+		//invoke rest services
+		this.restProvider.getUserSession(data).then((result: ResponseRestInterface) => {
+		 
+		  loading.dismiss(); //stop the loading component
 		  
-		  let res: any = result;
-		  loading.dismiss();
+		  this.userSession = JSON.stringify(result);
 		  
-		  if(res.data) {
-			
-			let userSession = res.data && res.data.data ? res.data.data : res.data;
-			this.authUser.initSession(userSession);
-			//this.navCtrl.setRoot('MenuPage');
+		  if(result.data) {
+			this.authUser.initSession(result.data);
+			if(this.loginPassword === '123' ) 
+			  this.navCtrl.setRoot('MenuPage');
 		  }
-		  else if(res.err) {
+		  if(result.error) {
 			this.showToast(messageErr);
 		  }
+		  
 		});
-		
 	});
+	
   }
   
   showToast(message: string) {

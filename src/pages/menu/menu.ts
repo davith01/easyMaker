@@ -1,5 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, Nav } from 'ionic-angular';
+import { Facebook } from '@ionic-native/facebook';
+import { Platform } from 'ionic-angular';
+import { AuthUserProvider } from '../../providers/auth-user/auth-user';
  
 export interface PageInterface {
   title: string;
@@ -25,10 +28,10 @@ export class MenuPage {
     { title: 'Home', pageName: 'TabsPage', tabComponent: 'tab1Root', index: 0, icon: 'home' },
     { title: 'Shopping cart', pageName: 'TabsPage', tabComponent: 'tab2Root', index: 1, icon: 'cart' },
     { title: 'Orders', pageName: 'TabsPage', tabComponent: 'tab3Root', index: 2, icon: 'paper-plane' },
-	{ title: 'Promotions', pageName: 'TabsPage', tabComponent: 'tab4Root', index: 3, icon: 'trending-up' },
+	{ title: 'Promotions', pageName: 'TabsPage', tabComponent: 'tab4Root', index: 3, icon: 'trending-up' }
   ];
   
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController,public fb: Facebook, public platform: Platform,public authUser: AuthUserProvider) {
 	
   }
   
@@ -72,4 +75,29 @@ export class MenuPage {
     return;
   }
   
+  logOut() {
+	if(this.authUser.getUserInfo().loginType!=='FBK'){
+		let params = { 'message': 'logout successs'};
+		this.navCtrl.setRoot('LoginPage', params);
+	}
+	else {
+		this.logOutFacebook();
+	}
+	
+  }
+  
+  logOutFacebook() {
+	if (this.platform.is('cordova')) {
+		 this.fb.getLoginStatus().then( data=>{
+			if (data.status =='connected'){
+			  this.fb.logout();
+			  let params = { 'message': 'logout successs'};
+			  this.navCtrl.setRoot('LoginPage', params);
+			}
+		 });
+	 }
+  }
+		
+	   
+	 
 }

@@ -10,49 +10,49 @@ export interface ResponseRestInterface {
   message?: string;
   error?: any;
 }
- 
+
 @IonicPage()
 @Component({
-  selector: 'page-promotion',
-  templateUrl: 'promotion.html',
+  selector: 'page-product',
+  templateUrl: 'product.html',
 })
-export class PromotionPage {
+export class ProductPage {
 
-  promotion: any;
-  promotionPrice: number;
-  promotionQuantity: number;
+  product: any;
+  productPrice: number;
+  productQuantity: number;
   
   constructor(public navCtrl: NavController, public navParams: NavParams, public authUser: AuthUserProvider, public alertCtrl: AlertController,public restProvider: RestProvider,public loadingCtrl: LoadingController, public toastCtrl: ToastController) {
-	  this.getPromotion();
+		this.getProduct();
   }
-  
-  getPromotion() {
-	  
+
+  //retrive product 	
+  getProduct() {
+	
 	let data = this.navParams.data;
-	this.promotion = data.promotion;
-	this.promotionPrice = data.price;
-	this.promotionQuantity = data.quantity || 1;
 	
-	if(this.promotion) {
+	if(data.product) {
 		
-		let messageErr = 'Can\'t get Promotion item';
-	
+		this.product = data.product;
+		this.productQuantity = data.quantity || 1;
+		this.productPrice = data.price;
+		
 		let loading = this.loadingCtrl.create({
 		  content: 'Please wait...'
 		});
 
 		loading.present().then(() => { //start the loading component
-			
 			//invoke rest services
-			this.restProvider.getPromotion(this.promotion).then((result: ResponseRestInterface) => {
-				
-				  loading.dismiss();//stop the loading component
+			this.restProvider.getProduct(this.product).then((result: ResponseRestInterface)  => {
+		
+				  loading.dismiss(); //stop the loading component
 				  
-				  if(result.data) {
-					this.promotion = result.data;
-					this.promotionPrice = this.promotion.price;
+				  if(result.data) { 
+					this.product = result.data;
+					this.productPrice = this.product.price;
 				  }
 				  else if(result.error) {
+					  let messageErr = 'Can\'t add to shopping cart';
 					  this.showToast(messageErr);
 				  }
 			});
@@ -61,28 +61,27 @@ export class PromotionPage {
 	
   }
  
+  //add product to shopping cart
   sendToShoppingCart() {
     
 	let navCtrl = this.navCtrl;
 	let restProvider = this.restProvider;
 	
 	let data = {
-		promotion: { id: this.promotion.id },
-		product: null,
-		quantity: this.promotionQuantity,
-		price: this.promotionPrice
+		product: { id: this.product.id },
+		promotion: null,
+		quantity: this.productQuantity,
+		price: this.productPrice
 	};
-	
-	let messageErr = 'Can\'t add to shopping cart';
 	
 	let loading = this.loadingCtrl.create({
 		  content: 'Please wait...'
 	});
 	
 	loading.present().then(() => { //start the loading component
-		
+	
 		//invoke rest services
-		restProvider.addShoppingCart(data).then((result: ResponseRestInterface) => {
+		restProvider.addShoppingCart(data).then((result: ResponseRestInterface)  => {
 			  
 			  loading.dismiss(); //stop the loading component
 			  
@@ -90,12 +89,15 @@ export class PromotionPage {
 				navCtrl.parent.select(1);
 			  }
 			  else if(result.error) {
+				  let messageErr = 'Can\'t add to shopping cart';
 				  this.showToast(messageErr);
 			  }
 		});
 	});
+	
   }
   
+
   doPromptAddOrder() {
 	let prompt = this.alertCtrl.create({
       title: 'Add to shopping cart',

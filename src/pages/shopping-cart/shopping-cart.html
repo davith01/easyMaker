@@ -1,32 +1,38 @@
 <ion-header>
-
   <ion-navbar>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-		
     <ion-title>shopping-cart</ion-title>
   </ion-navbar>
-
 </ion-header>
 
-
 <ion-content padding>
-  <ion-list>
+  
+    <ion-list *ngIf="shoppingCarts">
 
-    <ion-item *ngFor="let shoppingCart of shoppingCarts">
-      <ion-thumbnail item-start>
-        <!--img src="assets/imgs/promotions/nationalBerrDay_20190120.jpg"-->
-		<img [src]="shoppingCart.promotion.imagen">
-      </ion-thumbnail>
-      <h2 [innerHTML]="shoppingCart.promotion.title"></h2>
-      <p [innerHTML]="shoppingCart.promotion.description"></p>
-      <button ion-button clear item-end (click)="goToShoppingCart(shoppingCart)">View</button>
-    </ion-item>
+    <ion-list-header>Today</ion-list-header>
 	
-  </ion-list>
+	<ion-item *ngFor="let shoppingCart of shoppingCarts">
+      <ion-avatar item-start>
+        <img *ngIf="shoppingCart.product" [src]="shoppingCart.product.imagen">
+		<img *ngIf="shoppingCart.promotion" [src]="shoppingCart.promotion.imagen">
+      </ion-avatar>
+      <h2 *ngIf="shoppingCart.promotion" [innerHTML]="shoppingCart.promotion.name"></h2>
+	  <h2 *ngIf="shoppingCart.product" [innerHTML]="shoppingCart.product.name"></h2>
+	  
+	  <p>
+		 Price
+		 <button [innerHTML]="shoppingCart.price" ion-button color="light" icon-start>
+		 </button>
+		 <button ion-button clear item-end (click)="goToShoppingCart(shoppingCart)">View</button>
+		 Quantity
+		 <button [innerHTML]="shoppingCart.quantity" ion-button color="light" icon-end>
+		 </button>
+	  </p>
+	  
+    </ion-item>
+
+	</ion-list>
 
 </ion-content>
-
-
-

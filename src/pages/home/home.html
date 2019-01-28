@@ -16,11 +16,10 @@
 
   <div class="spacer"></div>
 
-  <h6 class="sub-title"> Promotions </h6>
+  <h6 class="sub-title" *ngIf="promotions"> Promotions </h6>
 
-  <ion-slides pager>
-    <ion-slide *ngFor="let promotion of promotions" on-click="goToPromotion(promotion)">
-
+  <ion-slides pager *ngIf="promotions">
+	<ion-slide *ngFor="let promotion of promotions" on-click="goToPromotion(promotion)">
 	  <img [src]="promotion.imagen" class="slide-image"/>      
 	  <h2 class="slide-title" [innerHTML]="promotion.title"></h2>	  
 	  <div class="slide-sale">
@@ -29,12 +28,10 @@
         </button>
 	  </div>
 	  <div class="line-separate"></div>
-	  
     </ion-slide>
   </ion-slides>
 
-  <h5 class="sub-title"> Products </h5>
-  
+  <h5 class="sub-title" *ngIf="products"> Products </h5>
   
   <ion-grid>
     <ion-row>

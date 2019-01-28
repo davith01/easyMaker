@@ -16,10 +16,9 @@
 		</button>
 		<div class="spacer" style="height:40px;" id="login-spacer3"></div>
 	</form>
-	<div *ngIf="userLogin">
-		{{userLogin}}
-	</div>
-	
+	<p *ngIf="userSession">
+	 {{ userSession }}
+	</p>
 	<button ion-button icon-right (click)="facebookLogin()" class="facebook-button">
       Login with
       <ion-icon name="logo-facebook"></ion-icon>

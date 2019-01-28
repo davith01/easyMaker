@@ -3,6 +3,12 @@ import { RestProvider } from '../../providers/rest/rest';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LoadingController, ToastController} from 'ionic-angular';
 
+export interface ResponseRestInterface {
+  data?: any;
+  message?: string;
+  error?: any;
+}
+
 @IonicPage()
 @Component({
   selector: 'page-shopping-cart',
@@ -10,7 +16,7 @@ import { LoadingController, ToastController} from 'ionic-angular';
 })
 export class ShoppingCartPage {
 
-  shoppingCarts: any = {};
+  shoppingCarts: any;
   
   constructor(public navCtrl: NavController, public navParams: NavParams,public restProvider: RestProvider,public loadingCtrl: LoadingController, public toastCtrl: ToastController) {
   }
@@ -22,14 +28,17 @@ export class ShoppingCartPage {
 		  content: 'Please wait...'
 	  });
 	  
-	  loading.present().then(() => {
-	    this.restProvider.getShoppingCartByUser().then(result => {
-		    loading.dismiss();
-			let res: any = result;
-		    if(res.data) { 
-			  this.shoppingCarts = res.data;
+	  loading.present().then(() => { //start the loading component
+	    
+		//invoke rest services
+	    this.restProvider.getShoppingCartByUser().then((result: ResponseRestInterface) => {
+		    
+			loading.dismiss(); //stop the loading component
+			
+			if(result.data) { 
+			  this.shoppingCarts = result.data;
 		    }
-		    else if(res.err) {
+		    else if(result.error) {
 			  this.showToast(messageErr);
 		    }
 	     });

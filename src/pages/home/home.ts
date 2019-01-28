@@ -3,13 +3,18 @@ import { RestProvider } from '../../providers/rest/rest';
 import { IonicPage, NavController } from 'ionic-angular';
 import { LoadingController, ToastController} from 'ionic-angular';
 
+export interface ResponseRestInterface {
+  data?: any;
+  message?: string;
+  error?: any;
+}
+
 @IonicPage()
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
 })
 export class HomePage {
-
   
   promotions: any;
   products: any;
@@ -17,30 +22,29 @@ export class HomePage {
   constructor(public navCtrl: NavController, public restProvider: RestProvider, public loadingCtrl: LoadingController, public toastCtrl: ToastController) {
   }
   
-  getProducts() {
-	let messageErr = 'Can\'t get products list';
-	
-	this.restProvider.getProducts().then(result => {
-	  let res: any = result;
-	  if(res.data) { 
-		this.products = res.data;
+  getProductList() {
+	//invoke rest services
+	this.restProvider.getProducts().then((result: ResponseRestInterface) => {
+	  
+	  if(result.data) { 
+		this.products = result.data;
 	  }
-	  else if(res.err) {
+	  else if(result.error) {
+		  let messageErr = 'Can\'t get products list';
 		  this.showToast(messageErr);
 	  }
 	});
   }
   
-  getPromotions() {
-	let messageErr = 'Can\'t get Promotion list';
-	
-	this.restProvider.getPromotions().then(result => {
-	  let res: any = result;
-	  console.log(res);
-	  if(res.data) { 
-		this.promotions = res.data;
+  getPromotionList() {
+	//invoke rest services
+	this.restProvider.getPromotions().then((result: ResponseRestInterface) => {
+	  
+	  if(result.data) { 
+		this.promotions = result.data;
 	  }
-	  else if(res.err) {
+	  else if(result.error) {
+		  let messageErr = 'Can\'t get Promotions list';
 		  this.showToast(messageErr);
 	  }
 	});
@@ -50,15 +54,20 @@ export class HomePage {
 	 this.navCtrl.push('PromotionPage',{promotion:promotion});
   }
   
+  goToProduct(product) {
+	 this.navCtrl.push('ProductPage',{product:product}); 
+  }
+  
   ionViewWillEnter(){
+	  
 	  let loading = this.loadingCtrl.create({
 		  content: 'Please wait...'
 	  });
 	
-	  loading.present().then(() => {
-		this.getPromotions();
-		this.getProducts();
-		loading.dismiss();
+	  loading.present().then(() => { //start the loading component
+		this.getPromotionList();
+		this.getProductList();
+		loading.dismiss(); //stop the loading component
 	  });
   }
   

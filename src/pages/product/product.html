@@ -2,7 +2,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>promotion</ion-title>
+    <ion-title>product</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -10,9 +10,9 @@
 
 <ion-content padding id="page4">
 
-  <ion-card *ngIf="promotion">
+  <ion-card *ngIf="product">
     <ion-card-content>
-	  <img [src]="promotion.imagen"/>
+	  <img [src]="product.imagen"/>
 	
 	  <ion-row>
 		<ion-col>
@@ -28,29 +28,28 @@
 		  </button>
 		</ion-col>
 	  </ion-row>
-	  
-	
-      <ion-card-title [innerHTML]="promotion.title">
-      </ion-card-title>
-      <p [innerHTML]="promotion.description"></p>
+      <ion-card-title [innerHTML]="product.name"> </ion-card-title>
+	  <p [innerHTML]="product.description"></p> 
     </ion-card-content>
 
+	
     <ion-item>
 	  <ion-icon name='pricetag' item-start style="color: #f53d3d"></ion-icon>
       Price
-      <button ion-button item-end outline style="border-color:#f53d3d; color:#f53d3d;" [innerHTML]="promotionPrice"></button>
+      <button ion-button item-end outline style="border-color:#f53d3d; color:#f53d3d;" [innerHTML]="productPrice"></button>
     </ion-item>
 	  
-	<div class="quantity-card" *ngIf="shoppingCart">
+	<div class="quantity-card">
 	  <h6>Quantity</h6>
-	  <ion-input class="quantity-input" type="number" [(ngModel)]="promotionQuantity"></ion-input>
+	  <ion-input class="quantity-input" type="number" [(ngModel)]="productQuantity"></ion-input>
 	  <button ion-button color="light">-</button>
 	  <button ion-button color="light">+</button>
     </div>
-	
+
   <button id="promotion-button2" ion-button color="danger" full (click)="doPromptAddOrder()">
     Add to shopping cart!
   </button>
+  
   </ion-card>
   
 </ion-content>

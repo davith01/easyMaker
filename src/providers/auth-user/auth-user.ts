@@ -3,21 +3,34 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class AuthUserProvider {
 
-  userSession: any;
+  private userInfo: any;
+  private token: string;
   
   constructor() {
+	this.token = window.localStorage.getItem('token');
+	this.userInfo = window.localStorage.getItem('userInfo');
   }
   
-  getSession(){
-	  return this.userSession;
+  initSession(data) {
+	  this.token = data.token;
+	  this.userInfo = data.userInfo;
+	  window.localStorage.setItem('token', data.token);
+	  window.localStorage.setItem('userInfo', data.userInfo);
   }
   
-  initSession(userSession) {
-	  this.userSession = userSession;
+  getToken(){
+	  return this.token;
+  }
+  
+  getUserInfo(){
+	  return this.userInfo;
   }
   
   destroy() {
-	  this.userSession = null;
+	  this.token = null;
+	  this.userInfo = null;
+	  window.localStorage.removeItem('token');
+	  window.localStorage.removeItem('userInfo');
   }
 
 }
