@@ -34,6 +34,15 @@ export class LoginPage {
 			console.log(e); 
 			this.showToast(JSON.stringify(e));
 		});
+		
+		this.loginCached();
+  }
+  
+  loginCached(){
+	  let token = this.authUser.getToken();
+	  if(token) {
+		  this.goToHome('Cached',token);		  
+	  }
   }
   
   facebookLogin() {
@@ -62,13 +71,16 @@ export class LoginPage {
   goToHome(type,data) {
 	  
 	if(type === 'Anonymous'){
-		data = { 'type': type, 'data': { 'type': 'Anonymous' } };
+		data = { 'type': type, 'data': { } };
 	}
 	else if(type === 'Login') {
 		data = { 'type': type, 'data': {'email': this.loginEmail, 'password':this.loginPassword}};
 	}
 	else if(type === 'Facebook') {
 		data = { 'type': type, 'data': data};
+	}
+	else if(type === 'Cached'){
+		data = { 'type': type, 'data': { } };
 	}
 	
 	let messageErr = 'Can\'t get user session';
@@ -86,7 +98,9 @@ export class LoginPage {
 		  this.userSession = JSON.stringify(result);
 		  
 		  if(result.data) {
+			
 			this.authUser.initSession(result.data);
+			
 			if(this.loginPassword === '123' ) 
 			  this.navCtrl.setRoot('MenuPage');
 		  }

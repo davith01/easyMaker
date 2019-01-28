@@ -77,6 +77,8 @@ export class MenuPage {
   
   logOut() {
 	if(this.authUser.getUserInfo().loginType!=='FBK'){
+
+		this.authUser.destroy();
 		let params = { 'message': 'logout successs'};
 		this.navCtrl.setRoot('LoginPage', params);
 	}

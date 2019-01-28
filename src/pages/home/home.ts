@@ -1,3 +1,4 @@
+
 import { Component } from '@angular/core';
 import { RestProvider } from '../../providers/rest/rest';
 import { IonicPage, NavController } from 'ionic-angular';
@@ -7,7 +8,7 @@ export interface ResponseRestInterface {
   data?: any;
   message?: string;
   error?: any;
-}
+} 
 
 @IonicPage()
 @Component({

@@ -64,7 +64,7 @@ export class RestProvider {
 
   getUserSession(data) {
 	  let url = this.apiUrl+'/auth-session/login.php';
-	  return this.httpSend(url,data);
+	  return data.type === 'Cached' ? this.httpSendWithAuthorization(url,data) : this.httpSend(url,data);
   }
   
   getProducts() {

@@ -1,17 +1,14 @@
 <ion-header>
-
   <ion-navbar>
     <button ion-button menuToggle class="menuToggle">
       <ion-icon name="menu"></ion-icon>
     </button>
-	  
-    
   </ion-navbar>
-
 </ion-header>
 
 
 <ion-content padding class="page-home">
+
   <img src="assets/imgs/logo-easy-maker.png" />
 
   <div class="spacer"></div>
@@ -29,13 +26,14 @@
 	  </div>
 	  <div class="line-separate"></div>
     </ion-slide>
+	
   </ion-slides>
 
-  <h5 class="sub-title" *ngIf="products"> Products </h5>
+  <h5 class="sub-title" *ngIf="products"> Products </h5> 
   
   <ion-grid>
     <ion-row>
-      <ion-col *ngFor="let product of products;" on-click="goToProduct(product)">
+      <ion-col *ngFor="let product of products;" on-click="goToProduct(product)"> 
         <div class="ion-card">
 			<img [src]="product.imagen" class="card-image"/>
 			<div class="card-title" [innerHTML]="product.name"></div>
