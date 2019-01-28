@@ -6,7 +6,7 @@ This uses the [Ionic](https://ionicframework.com/docs/intro) Framework component
 
 ## Easy Maker Architect Solution
 
-![Easy Maker Framework Architect](http://fundacionjesusdenazareth.org/easy-maker/imgs/solution-arquitect.jpeg "Services Framework Architect Preview")
+![Easy Maker Framework Architect](http://fundacionjesusdenazareth.org/easy-maker/imgs/solution-arquitect.jpg "Services Framework Architect Preview")
 
 ## Table of contents
 
