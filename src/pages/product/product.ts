@@ -19,8 +19,8 @@ export interface ResponseRestInterface {
 export class ProductPage {
 
   product: any;
-  productPrice: number;
-  productQuantity: number;
+  price: number;
+  quantity: number;
   
   constructor(public navCtrl: NavController, public navParams: NavParams, public authUser: AuthUserProvider, public alertCtrl: AlertController,public restProvider: RestProvider,public loadingCtrl: LoadingController, public toastCtrl: ToastController) {
 		this.getProduct();
@@ -34,8 +34,8 @@ export class ProductPage {
 	if(data.product) {
 		
 		this.product = data.product;
-		this.productQuantity = data.quantity || 1;
-		this.productPrice = data.price;
+		this.quantity = data.quantity || 1;
+		this.price = data.price;
 		
 		let loading = this.loadingCtrl.create({
 		  content: 'Please wait...'
@@ -49,7 +49,7 @@ export class ProductPage {
 				  
 				  if(result.data) { 
 					this.product = result.data;
-					this.productPrice = this.product.price;
+					this.price = this.product.price;
 				  }
 				  else if(result.error) {
 					  let messageErr = 'Can\'t add to shopping cart';
@@ -70,8 +70,8 @@ export class ProductPage {
 	let data = {
 		product: { id: this.product.id },
 		promotion: null,
-		quantity: this.productQuantity,
-		price: this.productPrice
+		quantity: this.quantity,
+		price: this.price
 	};
 	
 	let loading = this.loadingCtrl.create({
@@ -127,6 +127,14 @@ export class ProductPage {
     });
 
     toast.present(toast);
+  }
+  
+  removeQuantity() {
+	 --this.quantity;
+	 if(this.quantity < 0) this.quantity = 0;
+  }
+  addQuantity() {
+	 ++this.quantity;
   }
   
 }

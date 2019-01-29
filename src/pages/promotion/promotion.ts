@@ -19,8 +19,8 @@ export interface ResponseRestInterface {
 export class PromotionPage {
 
   promotion: any;
-  promotionPrice: number;
-  promotionQuantity: number;
+  price: number;
+  quantity: number;
   
   constructor(public navCtrl: NavController, public navParams: NavParams, public authUser: AuthUserProvider, public alertCtrl: AlertController,public restProvider: RestProvider,public loadingCtrl: LoadingController, public toastCtrl: ToastController) {
 	  this.getPromotion();
@@ -30,8 +30,8 @@ export class PromotionPage {
 	  
 	let data = this.navParams.data;
 	this.promotion = data.promotion;
-	this.promotionPrice = data.price;
-	this.promotionQuantity = data.quantity || 1;
+	this.price = data.price;
+	this.quantity = data.quantity || 1;
 	
 	if(this.promotion) {
 		
@@ -50,7 +50,7 @@ export class PromotionPage {
 				  
 				  if(result.data) {
 					this.promotion = result.data;
-					this.promotionPrice = this.promotion.price;
+					this.price = this.promotion.price;
 				  }
 				  else if(result.error) {
 					  this.showToast(messageErr);
@@ -69,8 +69,8 @@ export class PromotionPage {
 	let data = {
 		promotion: { id: this.promotion.id },
 		product: null,
-		quantity: this.promotionQuantity,
-		price: this.promotionPrice
+		quantity: this.quantity,
+		price: this.price
 	};
 	
 	let messageErr = 'Can\'t add to shopping cart';
@@ -125,6 +125,14 @@ export class PromotionPage {
     });
 
     toast.present(toast);
+  }
+  
+  removeQuantity() {
+	 --this.quantity;
+	 if(this.quantity < 0) this.quantity = 0;
+  }
+  addQuantity() {
+	 ++this.quantity;
   }
   
 }

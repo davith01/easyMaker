@@ -32,8 +32,8 @@
   <h5 class="sub-title" *ngIf="products"> Products </h5> 
   
   <ion-grid>
-    <ion-row>
-      <ion-col *ngFor="let product of products;" on-click="goToProduct(product)"> 
+    <ion-row align-items-end>
+      <ion-col col-4 *ngFor="let product of products;" on-click="goToProduct(product)"> 
         <div class="ion-card">
 			<img [src]="product.imagen" class="card-image"/>
 			<div class="card-title" [innerHTML]="product.name"></div>

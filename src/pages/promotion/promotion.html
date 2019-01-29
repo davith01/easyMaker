@@ -38,15 +38,23 @@
     <ion-item>
 	  <ion-icon name='pricetag' item-start style="color: #f53d3d"></ion-icon>
       Price
-      <button ion-button item-end outline style="border-color:#f53d3d; color:#f53d3d;" [innerHTML]="promotionPrice"></button>
+      <button ion-button item-end outline style="border-color:#f53d3d; color:#f53d3d;" [innerHTML]="price"></button>
     </ion-item>
 	  
-	<div class="quantity-card" *ngIf="shoppingCart">
-	  <h6>Quantity</h6>
-	  <ion-input class="quantity-input" type="number" [(ngModel)]="promotionQuantity"></ion-input>
-	  <button ion-button color="light">-</button>
-	  <button ion-button color="light">+</button>
-    </div>
+	<ion-grid>
+	  <ion-row align-items-center>
+		<ion-col col-4>
+		  <h6>Quantity</h6>
+		</ion-col>  
+		<ion-col >  
+		  <ion-input class="quantity-input" type="number" [(ngModel)]="quantity"></ion-input>
+		</ion-col>  
+		<ion-col col-6>  
+		  <button ion-button color="light" (click)="removeQuantity()">-</button>
+		  <button ion-button color="light" (click)="addQuantity()">+</button>
+		</ion-col>
+	  </ion-row>
+	</ion-grid>
 	
   <button id="promotion-button2" ion-button color="danger" full (click)="doPromptAddOrder()">
     Add to shopping cart!
